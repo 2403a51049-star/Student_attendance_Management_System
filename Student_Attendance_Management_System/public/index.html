@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Attendance Management System</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><div class="brand">ATTENDANCE PORTAL</div><button id="logoutBtn" class="hidden secondary">Logout</button></header>
+<main>
+  <section id="authView" class="auth-card">
+    <h1>Welcome back</h1><p class="muted">Sign in to manage and view attendance.</p>
+    <form id="loginForm">
+      <label>Email</label><input type="email" id="email" required placeholder="name@example.com">
+      <label>Password</label><input type="password" id="password" required placeholder="Your password">
+      <button type="submit">Sign in</button>
+    </form>
+    <details><summary>Need a demo account?</summary>
+      <p>Register the first admin using the form below. For a real institution, restrict public registration and create accounts through an administrator.</p>
+      <form id="registerForm">
+        <label>Full name</label><input id="regName" required>
+        <label>Email</label><input type="email" id="regEmail" required>
+        <label>Password (8+ characters)</label><input type="password" id="regPassword" minlength="8" required>
+        <label>Role</label><select id="regRole"><option value="admin">Admin</option><option value="faculty">Faculty</option><option value="student">Student</option></select>
+        <label>Roll number (students)</label><input id="regRoll">
+        <button type="submit" class="secondary">Create account</button>
+      </form>
+    </details>
+    <p id="authMessage" class="message"></p>
+  </section>
+
+  <section id="appView" class="hidden">
+    <div class="welcome"><div><p class="eyebrow">DASHBOARD</p><h1 id="welcomeName">Welcome</h1><p class="muted" id="roleLabel"></p></div><span class="pill">Online portal</span></div>
+    <div class="stats">
+      <article class="stat"><span>Total classes</span><strong id="totalClasses">0</strong></article>
+      <article class="stat"><span>Present</span><strong id="presentCount">0</strong></article>
+      <article class="stat"><span>Overall attendance</span><strong id="overallPercent">0%</strong></article>
+    </div>
+    <div class="panel">
+      <div class="panel-heading"><h2>My attendance summary</h2><button id="refreshBtn" class="secondary">Refresh</button></div>
+      <div id="summaryArea" class="summary-grid"><p class="muted">Sign in to load attendance.</p></div>
+    </div>
+    <div class="panel" id="facultyPanel">
+      <h2>Mark attendance</h2>
+      <form id="attendanceForm" class="inline-form">
+        <div><label>Course</label><select id="courseSelect" required></select></div>
+        <div><label>Date</label><input type="date" id="attendanceDate" required></div>
+        <button type="button" id="loadStudentsBtn" class="secondary">Load students</button>
+      </form>
+      <div id="studentList"></div>
+      <button id="saveAttendanceBtn" class="hidden">Save attendance</button>
+    </div>
+    <div class="panel" id="adminPanel">
+      <h2>Admin: Add a course</h2>
+      <form id="courseForm" class="inline-form">
+        <div><label>Course code</label><input id="courseCode" required placeholder="CS301"></div>
+        <div><label>Course name</label><input id="courseName" required placeholder="Software Engineering"></div>
+        <div><label>Section</label><input id="section" value="A"></div>
+        <button type="submit">Add course</button>
+      </form>
+      <h2 class="subheading">Admin: Add a student</h2>
+      <form id="studentForm" class="inline-form">
+        <div><label>Name</label><input id="studentName" required></div>
+        <div><label>Email</label><input type="email" id="studentEmail" required></div>
+        <div><label>Roll number</label><input id="studentRoll" required></div>
+        <div><label>Temporary password</label><input id="studentPassword" type="password" minlength="8" required></div>
+        <button type="submit">Add student</button>
+      </form>
+    </div>
+    <p id="appMessage" class="message"></p>
+  </section>
+</main>
+<footer>Student Attendance Management System · Academic project prototype</footer>
+<script src="script.js"></script>
+</body></html>
